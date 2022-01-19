@@ -1,0 +1,86 @@
+{
+    "end": {
+        "text": "1. Dans l'ensemble, l'audit montre une bonne protection du périmètre étudié. Nous recommandons de poursuivre les efforts dans une optique d'amélioration continue. Ces efforts doivent être soutenus par l'ensemble des directions de l'entreprise afin d'avoir une approche cyber transverse (documentation, sensibilisation, etc.).2. Dans l'ensemble, l'audit montre une protection moyenne du périmètre étudié. Nous recommandons de suivre le plan d'action proposé au plus vite et de mettre en place un processus d'amélioration continue afin de maintenir en conditions de sécurité opérationnelles votre système d'information.3. Dans l'ensemble, l'audit montre une protection faible du périmètre étudié. Nous recommandons de suivre le plan d'action proposé au plus vite et de développer une culture de la sécurité. Cette approche se doit d'être pensée de manière globale : sensibilisation de l'ensemble des équipes, mise en place d'une stratégie cyber, maintien en conditions de sécurité du système d'information, etc."
+    },
+    "start" : {
+        "text": "Dans un premier temps, nous pouvons noter que plusieurs bonnes pratiques de sécurité ont été repéré durant ce test d’intrusion :"
+    },
+    "positive": [
+        {
+            "anti-virus": {
+                "id": "1",
+                "text": "Un antivirus a été déployé sur l'ensemble du parc informatique."
+            }
+        },
+        {
+            "nac": {
+                "id": "2",
+                "text": "Un NAC (Network Access Control) a été identifié sur le réseau, empêchant un attaquant d'obtenir une adresse IP par le simple branchement d'une carte à son ordinateur."
+            }
+        },
+        {
+            "password-policy": {
+                "id": "3",
+                "text": "La stratégie choisie au sein du périmètre testé contraint les utilisateurs à un verrouillage de leurs comptes au bout de 3 tentatives, aussi ils sont soumis à une politique de mot de passe forte empêchant la réutilisation de chaînes de caractères précédemment utilisées."
+            }
+        },
+        {
+            "DC-a-jour": {
+                "id": "4",
+                "text": "le/les DCs (Domain Controller) mis en place dans votre infrastructure sont correctement maintenus à jour."
+            }
+        }
+    ],
+    "negative": [
+        {
+            "segmentation-reseau": {
+                "id": "1",
+                "text": "Il apparaît que les personnes ayant une adresse IP peuvent communiquer avec d'autres périphériques et ce, peu importe leur plage réseau. Nous préconisons de mettre en place des VLAN afin d’implémenter une segmentation de votre réseau."
+            }
+        },
+        {
+            "LLMNR": {
+                "id": "2",
+                "text": "Anciennement NBT-NS, cette fonctionnalité de Windows est activée sur une majeure partie des postes et serveurs offrant la possibilité à un attaquant d'obtenir des hashs NTLMv1/2 s'octroyant ainsi les privilèges des utilisateurs par exemple."
+            }
+        },
+        {
+            "update": {
+                "id": "3",
+                "text": "A cause d’un manque de mises à jour, les systèmes d'exploitation mis en place s'exposent à des vulnérabilités critiques. En effet, les potentiels attaquants peuvent aisément disposer de scripts prêts à l'emploi disponible en libre accès sur Internet et notamment sur github.com ou exlpoit-db.com"
+            }
+        },
+        {
+            "mot-de-passe-faible": {
+                "id": "3",
+                "text": "Lors de notre audit, un certain nombre de mots de passe faibles ont été trouvés. Ce sont majoritairement les bases de données et les périphériques (imprimantes par exemple) qui sont touchés."
+            }
+        },
+        {
+            "encrypted-disk": {
+                "id": "3",
+                "text": "Le disque dur étant non chiffré, il nous a été possible de récupérer l'intégralité des fichiers présents sur le système par le biais d'une clef bootable."
+            }
+        },
+        {
+            "reuse-password": {
+                "id": "3",
+                "text": "La ré-utilisation de mot de passe à fort privilèges offre la possibilité à un attaquant de faire des déplacements latéraux."
+            }
+        },
+        {
+            "smb-anonymous": {
+                "id": "3",
+                "text": "Nous avons été en mesure de lister le contenu des différents serveurs sans compte ni privilèges sur le réseau."
+            }
+        },
+        {
+            "wifi-wep": {
+                "id": "3",
+                "text": "A date, le protocole de sécurité du réseau sans-fil Wifi est obsolète. En effet, il est aisé de connaître la clé en cassant le protocole."
+            }
+        }
+    ]
+ }
+ 
+ 

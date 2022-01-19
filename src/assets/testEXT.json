@@ -1,0 +1,84 @@
+{
+    "end": {
+        "text": "1. Dans l'ensemble, l'audit montre une bonne protection du périmètre étudié. Nous recommandons de poursuivre les efforts dans une optique d'amélioration continue. Ces efforts doivent être soutenus par l'ensemble des directions de l'entreprise afin d'avoir une approche cyber transverse (documentation, sensibilisation, etc.).2. Dans l'ensemble, l'audit montre une protection moyenne du périmètre étudié. Nous recommandons de suivre le plan d'action proposé au plus vite et de mettre en place un processus d'amélioration continue afin de maintenir en conditions de sécurité opérationnelles votre système d'information.3. Dans l'ensemble, l'audit montre une protection faible du périmètre étudié. Nous recommandons de suivre le plan d'action proposé au plus vite et de développer une culture de la sécurité. Cette approche se doit d'être pensée de manière globale : sensibilisation de l'ensemble des équipes, mise en place d'une stratégie cyber, maintien en conditions de sécurité du système d'information, etc."
+    },
+    "start": {
+        "text": "Dans un premier temps il est notable de signaler que plusieurs bonnes règles de sécurité ont été repérées durant ce test d’intrusion."
+    },
+    "positive": [
+        {
+            "SQLi": {
+                "id": "1",
+                "text": "nous n’avons pas réussi à injecter de commande SQL malicieuse et n’avons pas eu accès aux informations de la base de données."
+            }
+        },
+        {
+            "XSS": {
+                "id": "2",
+                "text": "la sécurité au niveau des champs des différents formulaires est correcte et empêche les attaquants de pouvoir injecter du code pour prendre la main sur  l’application ou le serveur."
+            }
+        },
+        {
+            "DIRLISTING": {
+                "id": "3",
+                "text": "l’interdiction de l’énumération au niveau des répertoires évite l’accès et la récupération d’informations de manière illégitime sur le serveur web."
+            }
+        },
+        {
+            "HTTPS": {
+                "id": "3",
+                "text": "le chiffrement de la connexion entre le client et le serveur empêche l’écoute et l’interception des données échangées (identifiant, mot de passe, etc.)."
+            }
+        },
+        {
+            "cloisonnement": {
+                "id": "1",
+                "text": "Le système de gestion des identités (comptes, habilitations, accès) étant localisé côté serveur, cela le prémunit des attaques de type 'élévation de privilèges'."
+            }
+        }
+    ],
+    "negative": [
+        {
+            "sqli": {
+                "id": "1",
+                "text": "le manque de contrôle des champs utilisés par les applications laisse la porte ouverte au risque d'injection SQL. Ce type d'attaque mène à l'accès illégitime des données contenues dans la base de données par des attaquants."
+            }
+        },
+        {
+            "lfi": {
+                "id": "1",
+                "text": "il nous a été possible de procéder à des attaques par énumération en devinant les chemins et répertoires contenus par le serveur afin d’en récupérer le contenu."
+            }
+        },
+        {
+            "ssl-http": {
+                "id": "2",
+                "text": "l’algorithme de chiffrement utilisé par la couche SSL/TLS est inexistant ou dépassé, par conséquent le trafic n’est plus correctement protégé. Toutefois, son ancienneté amène un risque considéré comme faible car l’attaquant doit être en position d’écouter le trafic et contourner un algorithme de chiffrement peut s’avérer coûteux en ressources."
+            }
+        },
+        {
+            "fuite-info": {
+                "id": "2",
+                "text": "la diffusion de données techniques est une vulnérabilité qui peut amener un risque fort puisque cela va permettre à l’attaquant de mieux comprendre le périmètre et de trouver les outils adéquats pour réussir son intrusion."
+            }
+        },
+        {
+            "compte-faible": {
+                "id": "1",
+                "text": "il a été détecté un ou plusieurs comptes dont le mot de passe est faible. Cette vulnérabilité peut être exploitée via des attaques de type “dictionnaire” ou par “force brute”. Nous vous recommandons de mettre en place une politique de mot de passe en corrélation avec les recommandations de l’ANSSI et de la CNIL afin d’empêcher ce type d’attaques."
+            }
+        },
+        {
+            "Cookie": {
+                "id": "1",
+                "text": "les attaques de rejeu de cookies sont rendues possibles par la mauvaise configuration des attributs 'HttpOnly' et 'Secure'."
+            }
+        },
+        {
+            "Mise-a-jour": {
+                "id": "1",
+                "text": "pour assurer la sécurité des composants audités, nous vous encourageons à mettre à jour et installer les correctifs de sécurité proposés par les éditeurs des solutions que vous utilisez au plus vite."
+            }
+        }
+    ]
+}
